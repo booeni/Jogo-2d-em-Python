@@ -3,6 +3,9 @@ import pygame
 import time
 import random
 
+
+
+
 pygame.init()
 largura = 1000
 altura = 600
