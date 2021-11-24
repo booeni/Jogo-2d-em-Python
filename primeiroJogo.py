@@ -12,6 +12,8 @@ with open("dadosDoUsuario.txt", "a") as arquivo:
     for valor in dadosUsuario:
         arquivo.write(str(valor))
 
+       
+
 
 pygame.init()
 largura = 1000
