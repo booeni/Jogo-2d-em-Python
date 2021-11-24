@@ -3,7 +3,14 @@ import pygame
 import time
 import random
 
+NomeUsuario = input("Digite o seu nome: ")
+emailUsuario = input("Digite o seu email: ")
 
+dadosUsuario = "nome: " + NomeUsuario + "email: " + emailUsuario
+
+with open("dadosDoUsuario.txt", "w") as arquivo:
+    for valor in dadosUsuario:
+        arquivo.write(str(valor))
 
 
 pygame.init()
@@ -20,13 +27,16 @@ pygame.display.set_icon(icone)
 superman = pygame.image.load("assets/superman2.png")
 superman = pygame.transform.rotate(superman, 90)
 alturaSuperman = 200
-larguraSuperman = 87
+larguraSuperman = 50
 fundo = pygame.image.load("assets/fundo2.jpg")
 fundo = pygame.transform.scale(fundo, (1000, 600))
 missile = pygame.image.load("assets/missile2.png")
 missile = pygame.transform.rotate(missile, 90)
 missileAltura = 200
-missileLargura = 87
+missileLargura = 20
+
+somDeMorte = pygame.mixer.Sound("assets/somDeMorte.wav")
+somDeMorte.set_volume(0.1)
 
 
 def mostraMissile(x,y):
@@ -56,11 +66,15 @@ def mostraPontuacao(contador):
     gameDisplay.blit(texto, (10,5))
 
 def morte():
+    pygame.mixer.Sound.play(somDeMorte)
     escreveNaTela("Lex luthor venceu!")
 
 
 def jogo():
 
+    pygame.mixer.music.load("assets/SupermanTheme.mp3")
+    pygame.mixer.music.set_volume(0.1)
+    pygame.mixer.music.play(-1)
     supermanPosicaoX = largura * 0.38
     supermanPosicaoY = altura * 0.68
     movimentoX = 0
