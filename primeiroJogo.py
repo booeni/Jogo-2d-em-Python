@@ -6,9 +6,9 @@ import random
 NomeUsuario = input("Digite o seu nome: ")
 emailUsuario = input("Digite o seu email: ")
 
-dadosUsuario = "nome: " + NomeUsuario + "email: " + emailUsuario
+dadosUsuario = "nome: " + NomeUsuario + " " + "email: " + emailUsuario
 
-with open("dadosDoUsuario.txt", "w") as arquivo:
+with open("dadosDoUsuario.txt", "a") as arquivo:
     for valor in dadosUsuario:
         arquivo.write(str(valor))
 
